@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	div { background:yellow; margin:5px; }
+	</style>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+	<span>Click a div!</span>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<p>Third p</p>
+	<div id="msg"></div>
+	
+<script type="text/javascript">
+
+var IndexOfParagraph = 0;
+var IndexOfSentence = 0;
+
+var MaxIndexOfParagraph = 2;
+var MaxIndexOfSentence = 5;
+
+$(document).ready(function () {
+
+	ExtractPtag();
+	//GetSentence();
+	KeyboardEvent();
+
+});
+
+function ExtractPtag(){
+  // this is the dom element clicked
+  //var index = $("p").index(this);
+  //$("span").text("That was p index #" + index);
+  
+  var ArrayOfParagraph = $("p").get();
+  //var index = $("p").index(this);
+
+  //alert("ArrayOfParagraph Length is" + ArrayOfParagraph.length);
+  
+  for(i=0; i < ArrayOfParagraph.length; ++i)
+  {
+  
+	//$("span").text("Output1: " + i + "	Output2: " + ArrayOfParagraph[i].innerHTML);
+	
+	// Method 1
+	//var newHTML = "<span style = 'color:#008000' >" + ArrayOfParagraph[index].innerHTML + "</span>";
+	//ArrayOfParagraph[index].innerHTML = newHTML;
+	
+	var tempHTML = ArrayOfParagraph[i].innerHTML.split('. ');
+	var temp2HTML = "";
+	for(j=0; j < tempHTML.length; ++j)
+	{
+		temp2HTML += ('<span>' + tempHTML[j] + '. ' + '</span>'); 
+	}
+	
+	//alert("END OF SPLIT");
+	ArrayOfParagraph[i].innerHTML = temp2HTML;
+	//alert(ArrayOfParagraph[i].innerHTML);
+	GetSentence();
+	}
+};
+
+
+
+function GetSentence(){
+	
+	//for(i=0 ; i < MaxIndexOfParagraph; ++i)
+	//{
+		//for(j=0; j < MaxIndexOfSentence; ++j)
+		//{
+			//var selector = "p:eq(" + IndexOfParagraph + ") > span:eq(" + IndexOfSentence + ")" ;
+			//alert("IndexOfParagraph: " + IndexOfParagraph + " IndexOfSentence: " + IndexOfSentence );	
+			//$(selector).css("color", "blue");	
+			var selectorCurrent, selectorBefore, selectorAfter = "";
+
+			if(IndexOfSentence ==0)
+			{
+				selectorCurrent = "p:eq(" + IndexOfParagraph + ") > span:eq(" + IndexOfSentence + ")" ;
+				selectorBefore = "";
+				selectorAfter = "p:eq(" + IndexOfParagraph + ") > span:eq(" + (IndexOfSentence+1) + ")" ;
+			}
+			else
+			{
+				selectorCurrent = "p:eq(" + IndexOfParagraph + ") > span:eq(" + IndexOfSentence + ")" ;
+				selectorBefore = "p:eq(" + IndexOfParagraph + ") > span:eq(" + (IndexOfSentence-1) + ")" ;
+				selectorAfter = "p:eq(" + IndexOfParagraph + ") > span:eq(" + (IndexOfSentence+1) + ")" ;
+			};
+			//var selector = "p:eq(" + i + ") > span:eq(" + j + ")" ;
+			//alert("IndexOfParagraph: " + IndexOfParagraph + " IndexOfSentence: " + IndexOfSentence );	
+			//alert("IndexOfParagraph: " + i + " IndexOfSentence: " + j );	
+			$(selectorCurrent).css({"color": "#222222", "background-color": "#C7EDCC"});				
+			$(selectorBefore).css({"color":"black", "background-color": "#FFFFFF"});	
+			$(selectorAfter).css({"color":"black", "background-color": "#FFFFFF"});				
+			
+		//}	END for j loop
+	//} END for i loop
+};
+
+
+function KeyboardEvent(){
+
+	$(document).bind("keydown", function(event){
+
+		var keyCode = event.keyCode || event.which;
+
+		if (keyCode == 190)
+		{
+			IndexOfSentence +=1;
+			$("#msg").html("<h1>"+ IndexOfSentence +"</h1>").css({"background-color": "#000000", "color": "#00ed00", "border": "2px solid #C2E9C8"}).fadeIn();
+			GetSentence();
+		}
+		else if (keyCode == 188)
+		{
+			IndexOfSentence -=1;
+			$("#msg").html("<h1>"+ IndexOfSentence +"</h1>").css({"background-color": "#C7EDCC", "color": "#2F2F2F", "border": "2px solid #C2E9C8"}).fadeIn();
+			GetSentence();
+		}; // END if
+
+	}); // END bind
+}; // END function keyboard_event
+
+
+
+</script>
+
+</body>
+</html>
