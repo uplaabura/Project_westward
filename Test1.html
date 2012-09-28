@@ -39,12 +39,34 @@ var MaxIndexOfSentence = 5;
 
 $(document).ready(function Main() {
 
+	$.getScript("https://raw.github.com/uplaabura/Project_westward/master/ExtractPtag.js", function(){
+		ExtractPtag();
+	});
 	
-	ExtractPtag();
 
 });
 
-function ExtractPtag(){
+
+
+
+/*
+function GetSentence(){
+	
+	//for(i=0 ; i < MaxIndexOfParagraph; ++i)
+	//{
+		//for(j=0; j < MaxIndexOfSentence; ++j)
+		//{
+			//var selector = "p:eq(" + IndexOfParagraph + ") > span:eq(" + IndexOfSentence + ")" ;
+			//alert("IndexOfParagraph: " + IndexOfParagraph + " IndexOfSentence: " + IndexOfSentence );	
+			//$(selector).css("color", "blue");	
+			var selectorCurrent, selectorBefore, selectorAfter = "";
+
+			if(IndexOfSentence ==0)
+			{
+				selectorCurrent = "p:eq(" + IndexOfParagraph + ") > span:eq(" + IndexOfSentence + ")" ;
+				selectorBefore = "";
+				selectorAfter = "p:eq(" + IndexOfParagraph + ") > span:eq(" + (IndexOfSentence+1) + ")" ;
+			}function ExtractPtag(){
   // this is the dom element clicked
   //var index = $("p").index(this);
   //$("span").text("That was p index #" + index);
@@ -98,7 +120,7 @@ function ExtractPtag(){
 
 
    };
-	*/
+	
 
 	
 	//alert("END OF SPLIT");
@@ -113,26 +135,6 @@ function ExtractPtag(){
 	});
 	}; // END of for i
 };
-
-
-/*
-function GetSentence(){
-	
-	//for(i=0 ; i < MaxIndexOfParagraph; ++i)
-	//{
-		//for(j=0; j < MaxIndexOfSentence; ++j)
-		//{
-			//var selector = "p:eq(" + IndexOfParagraph + ") > span:eq(" + IndexOfSentence + ")" ;
-			//alert("IndexOfParagraph: " + IndexOfParagraph + " IndexOfSentence: " + IndexOfSentence );	
-			//$(selector).css("color", "blue");	
-			var selectorCurrent, selectorBefore, selectorAfter = "";
-
-			if(IndexOfSentence ==0)
-			{
-				selectorCurrent = "p:eq(" + IndexOfParagraph + ") > span:eq(" + IndexOfSentence + ")" ;
-				selectorBefore = "";
-				selectorAfter = "p:eq(" + IndexOfParagraph + ") > span:eq(" + (IndexOfSentence+1) + ")" ;
-			}
 			else
 			{
 				selectorCurrent = "p:eq(" + IndexOfParagraph + ") > span:eq(" + IndexOfSentence + ")" ;
