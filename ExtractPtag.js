@@ -28,20 +28,20 @@ function ExtractPtag(){
 	// Case4: a.k.a.
 	// Case5: ...
 
-	for(j=0; j < ArrayOfSentence.length-1; ++j)
-	{
-		tempHTML += ('<span>' + ArrayOfSentence[j] + '. ' + '</span>'); 
-	} // END of for j
-		/*
-   	for (j=0; j < ArrayOfSentence.length; ++j)
-   	{
-      switch(tempHTML[j])
-      {
-      	case "Mr":
-      	case "Mrs":
-      	case "Dr"
-			tempHTML += ('<span>' + ArrayOfSentence[j] + '.' + ' ' + ArrayOfSentence[++j] + '</span>');
-			break;
+		for(j=0; j < ArrayOfSentence.length-1; ++j)
+		{
+			tempHTML += ('<span>' + ArrayOfSentence[j] + '. ' + '</span>'); 
+		} // END of for j
+			/*
+	   	for (j=0; j < ArrayOfSentence.length; ++j)
+	   	{
+	      switch(tempHTML[j])
+	      {
+	      	case "Mr":
+	      	case "Mrs":
+	      	case "Dr"
+				tempHTML += ('<span>' + ArrayOfSentence[j] + '.' + ' ' + ArrayOfSentence[++j] + '</span>');
+				break;
 
 
 
@@ -55,15 +55,14 @@ function ExtractPtag(){
 	*/
 
 	
-	//alert("END OF SPLIT");
-	ArrayOfParagraph[i].innerHTML = tempHTML;
-	//alert(ArrayOfParagraph[i].innerHTML);
-	$.getScript("https://raw.github.com/uplaabura/Project_westward/master/GetSentence.js", function(){
-		GetSentence();
-	});
-	//GetSentence();
-	$.getScript("https://raw.github.com/uplaabura/Project_westward/master/KeyboardEvent.js", function(){
-		KeyboardEvent(ArrayOfParagraph,ArrayOfSentence);
-	});
+		//alert("END OF SPLIT");
+		ArrayOfParagraph[i].innerHTML = tempHTML;
+		//alert(ArrayOfParagraph[i].innerHTML);
+		var IndexOfParagraph = 0;
+		var IndexOfSentence = 0;
+		
+		$.getScript("/KeyboardEvent.js", function(){
+			KeyboardEvent(IndexOfParagraph,IndexOfSentence,ArrayOfParagraph,ArrayOfSentence);
+		});
 	}; // END of for i
 };

@@ -1,4 +1,4 @@
-function GetSentence(){
+function GetSentence(IndexOfParagraph,IndexOfSentence){
 	
 	//for(i=0 ; i < MaxIndexOfParagraph; ++i)
 	//{

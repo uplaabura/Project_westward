@@ -31,18 +31,12 @@
 	
 <script type="text/javascript">
 
-var IndexOfParagraph = 0;
-var IndexOfSentence = 0;
+$(document).ready(function() {
 
-var MaxIndexOfParagraph = 2;
-var MaxIndexOfSentence = 5;
-
-$(document).ready(function Main() {
-
-	$.getScript("https://raw.github.com/uplaabura/Project_westward/master/ExtractPtag.js", function(){
+	$.getScript("/ExtractPtag.js", function(){
 		ExtractPtag();
 	});
-	
+
 
 });
 
