@@ -39,6 +39,7 @@ var MaxIndexOfSentence = 5;
 
 $(document).ready(function Main() {
 
+	
 	ExtractPtag();
 
 });
@@ -76,7 +77,7 @@ function ExtractPtag(){
 	for(j=0; j < ArrayOfSentence.length-1; ++j)
 	{
 		tempHTML += ('<span>' + ArrayOfSentence[j] + '. ' + '</span>'); 
-	}
+	} // END of for j
 		/*
    	for (j=0; j < ArrayOfSentence.length; ++j)
    	{
@@ -103,10 +104,14 @@ function ExtractPtag(){
 	//alert("END OF SPLIT");
 	ArrayOfParagraph[i].innerHTML = tempHTML;
 	//alert(ArrayOfParagraph[i].innerHTML);
-	$.getScript("/")
+	$.getScript("https://raw.github.com/uplaabura/Project_westward/master/GetSentence.js", function(){
+		GetSentence();
+	});
 	//GetSentence();
-	KeyboardEvent(ArrayOfParagraph,ArrayOfSentence);
-	}
+	$.getScript("https://raw.github.com/uplaabura/Project_westward/master/KeyboardEvent.js", function(){
+		KeyboardEvent(ArrayOfParagraph,ArrayOfSentence);
+	});
+	}; // END of for i
 };
 
 
@@ -144,7 +149,7 @@ function GetSentence(){
 		//}	END for j loop
 	//} END for i loop
 };
-*/
+
 
 function KeyboardEvent(ArrayOfParagraph,ArrayOfSentence){
 
@@ -190,6 +195,7 @@ function KeyboardEvent(ArrayOfParagraph,ArrayOfSentence){
 	}); // END bind
 }; // END function keyboard_event
 
+*/
 
 
 </script>
