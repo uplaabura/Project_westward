@@ -6,7 +6,7 @@ function KeyboardEvent(IndexOfParagraph,IndexOfSentence,ArrayOfParagraph,ArrayOf
 		//event.preventDefault();
 		if (keyCode == 32 && IndexOfParagraph == 0 && IndexOfSentence == 0 )
 		{
-			$.getScript("/GetSentence.js", function(){
+			$.getScript("GetSentence.js", function(){
 				GetSentence(IndexOfParagraph,IndexOfSentence);
 			});
 		}
@@ -39,7 +39,7 @@ function KeyboardEvent(IndexOfParagraph,IndexOfSentence,ArrayOfParagraph,ArrayOf
 			}; // END if IndexOfSentence
 			*/
 			// what we really want to do:
-			GetSentence(IndexO
+			GetSentence(IndexOfParagraph,IndexOfSentence);
 			// for debug
 			///$("#msg").html("<h1>"+ IndexOfSentence +"</h1>").css({"background-color": "#C7EDCC", "color": "#2F2F2F", "border": "2px solid #C2E9C8"}).fadeIn();
 		}; // END if keyCode

@@ -61,7 +61,7 @@ function ExtractPtag(){
 		var IndexOfParagraph = 0;
 		var IndexOfSentence = 0;
 		
-		$.getScript("/KeyboardEvent.js", function(){
+		$.getScript("KeyboardEvent.js", function(){
 			KeyboardEvent(IndexOfParagraph,IndexOfSentence,ArrayOfParagraph,ArrayOfSentence);
 		});
 	}; // END of for i
